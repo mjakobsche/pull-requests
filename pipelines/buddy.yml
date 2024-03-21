@@ -4,6 +4,7 @@
     refs:
     - "refs/heads/new"
   fail_on_prepare_env_warning: true
+  cpu: "ARM"
   actions:
   - action: "echo ls"
     type: "BUILD"
