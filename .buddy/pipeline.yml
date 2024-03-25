@@ -1,4 +1,4 @@
-- pipeline: "pips"
+- pipeline: "pipeline"
   on: "CLICK"
   refs:
   - "refs/heads/dev*"
