@@ -1,12 +1,12 @@
-BASE_BRANCH="${1}"
-AMOUNT=$2
-CHANGED_FILE="changes.txt"
+AMOUNT=$1
 COUNTER=1
-while [ $COUNTER -lt $AMOUNT ]
+BASE_BRANCH="$(git branch --show-current)"
+CHANGED_FILE="changes.txt"
+while [ ${COUNTER} -lt ${AMOUNT} ]
 do
     CHANGE=$(date)
     PR_BRANCH="${BASE_BRANCH}-${COUNTER}"
-    git checkout $BASE_BRANCH
+    git checkout "${BASE_BRANCH}"
     git pull
     sleep 3
     git branch "${PR_BRANCH}"    
@@ -15,6 +15,6 @@ do
     git add "${CHANGED_FILE}"
     git commit -am "iteration ${COUNTER}"
     git push -u origin "${PR_BRANCH}"
-    gh pr create --title "pr no. ($COUNTER)" --body "appended ${CHANGE} to ${CHANGED_FILE}"
+    gh pr create --title "pr no. (${COUNTER})" --body "appended ${CHANGE} to ${CHANGED_FILE}"
     ((COUNTER++))
 done
