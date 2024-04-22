@@ -16,5 +16,5 @@ do
     git commit -am "iteration ${ITERATION}"
     git push -u origin "${PR_BRANCH}"
     gh pr create --title "pr no. (${ITERATION})" --body "appended ${CHANGE} to ${CHANGED_FILE}"
-    ((COUNTER++))
+    (( ITERATION++ ))
 done
