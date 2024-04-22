@@ -1,8 +1,7 @@
 BASE_BRANCH="${1}"
-AMOUNT="${2}"
+AMOUNT=$2
 CHANGED_FILE="changes.txt"
-COUNTER=0
-
+COUNTER=1
 while [ $COUNTER -lt $AMOUNT ]
 do
     CHANGE=$(date)
@@ -17,5 +16,5 @@ do
     git commit -am "iteration ${COUNTER}"
     git push -u origin "${PR_BRANCH}"
     gh pr create --title "pr no. ($COUNTER)" --body "appended ${CHANGE} to ${CHANGED_FILE}"
-    COUNTER=${COUNTER}++
+    ((COUNTER++))
 done
